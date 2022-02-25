@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import Room
+from .models import Answer
 
 # Register your models here.
-class RoomAdmin(admin.ModelAdmin):
-    list_display = ('code',)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('code', 'num_players', 'text',)
 
-admin.site.register(Room, RoomAdmin)
+
+
+# admin.site.register(Room, RoomAdmin)
+admin.site.register(Answer, AnswerAdmin)

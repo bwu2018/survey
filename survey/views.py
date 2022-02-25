@@ -1,8 +1,11 @@
+from re import template
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
 import string
 
+from django.views.generic import ListView, DetailView
+from .models import Answer
 from .forms import GameForm
 
 # Create your views here.
@@ -26,9 +29,16 @@ def create_game(request):
             return render(request, 'game_main.html', {'num_players': num_players, 'secret_code': secret_code})
     return render(request, 'hello.html')
 
+# class GameRoomView(ListView):
+#     model = Room
+#     template_name = 'game_main.html'
+#     # answers = Room.objects.get(code=code)
+#     # return render(response, 'game_main.html', 
+#     #         {'code': code, 
+#     #         'num_players': num_players, 
+#     #         'answers': answers})
 
-def query(request):
-    return
 
-def result(request):
-    return
+class AnswerDetailView(DetailView):
+    model = Answer
+    template_name = 'game_main.html'
