@@ -1,6 +1,6 @@
 <h1>Room code: {{ answers.code }}</h1>
 <h2>Number of Players: {{ answers.num_players }}</h2>
-<form method="post" action="#">
+<form method="post" action="">
     {% csrf_token %}
     <ul>
     {% if answers.answer_set.count >= answers.num_players %}
@@ -11,4 +11,9 @@
     </ul>
     <input type="text", name="new">
     <button type="submit", name="newAnswer", value="newAnswer">Submit</button>
+</form>
+<br>
+<form method="post" action="">
+    {% csrf_token %}
+    <button type="submit", name="reset", value="reset">RESET</button>
 </form>
