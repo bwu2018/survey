@@ -1,10 +1,14 @@
-<h1>Room code: {{ object.code }}</h1>
-<h2>Number of Players: {{ object.num_players }}</h2>
-
-{% block content %}
-<ul>
-{% for item in object_list %}
-    <li>{{ item.text }}</li>
-{% endfor %}
-</ul>
-{% endblock %}
+<h1>Room code: {{ answers.code }}</h1>
+<h2>Number of Players: {{ answers.num_players }}</h2>
+<form method="post" action="#">
+    {% csrf_token %}
+    <ul>
+    {% if answers.answer_set.count >= answers.num_players %}
+        {% for answer in answers.answer_set.all %}
+            <li>{{ answer.user }}: {{ answer.text }}</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+    <input type="text", name="new">
+    <button type="submit", name="newAnswer", value="newAnswer">Submit</button>
+</form>

@@ -1,18 +1,19 @@
 <h1>Welcome</h1>
 
 <h2>Create Game</h2>
-<form action="/survey/game/" method="post">
+<form action="/survey/create_game/" method="post">
     {% csrf_token %}
+    <!-- <label for="username">Username:</label><br>  -->
     <label for="num_players">Number of Players:</label><br>
-    <input type="text" id="num_players" name="num_players"><br>
+    <input type="number" id="num_players" name="num_players">
     <input type="submit" value="Submit">
 </form>
 
 <h2>Join Game</h2>
-<form>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
-    <label for="secret_code">Room Code:</label><br>
-    <input type="text" id="secret_code" name="secret_code">
+<form action="/survey/get_game/" method="get">
+    <!-- <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br> -->
+    <label for="code">Room Code:</label><br>
+    <input type="text" id="code" name="code">
     <input type="submit" value="Submit">
 </form>
