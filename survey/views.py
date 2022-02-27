@@ -1,18 +1,14 @@
 from email.policy import HTTP
 from re import template
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 import random
 import string
 
-from django.views.generic import ListView, DetailView
-from .models import Room, Answer
+from .models import Room
 from .forms import GameForm, CodeForm
 
 # Create your views here.
-def say_hello(request):
-    return render(request, 'hello.html', {'name': 'Brandon', 'secret_code': random_code()})
-
 def random_code():
     length = 4
     return ''.join(random.choice(string.ascii_uppercase) for x in range(length))
@@ -44,17 +40,3 @@ def create_game(request):
             code = form.cleaned_data['code']
             room = Room.objects.get(code=code)
         return HttpResponseRedirect(f'/survey/{room.code}')
-
-# class GameRoomView(ListView):
-#     model = Room
-#     template_name = 'game_main.html'
-#     # answers = Room.objects.get(code=code)
-#     # return render(response, 'game_main.html', 
-#     #         {'code': code, 
-#     #         'num_players': num_players, 
-#     #         'answers': answers})
-
-
-# class AnswerDetailView(DetailView):
-#     model = Answer
-#     template_name = 'game_main.html'

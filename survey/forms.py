@@ -6,5 +6,5 @@ class GameForm(forms.Form):
 class CodeForm(forms.Form):
     code = forms.CharField(label='code')
 
-class UserForm(forms.Form):
-    username = forms.CharField(label='username')
+# class UserForm(forms.Form):
+#     username = forms.CharField(label='username')
