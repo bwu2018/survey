@@ -25,7 +25,7 @@ def add_answer(response, code):
             answers.answer_set.create(user = 'temp', text = answer)
         elif response.POST.get("reset"):
             answers.answer_set.all().delete()
-    #TODO: Refreshing page resubmits previous POST request
+        return HttpResponseRedirect(f'/survey/{code}')
     return render(response, 'game_main.html', {'answers': answers})
 
 def create_game(request):
